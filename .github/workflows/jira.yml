@@ -22,7 +22,7 @@ jobs:
       id: create
       uses: atlassian/gajira-create@master
       with:
-        project: SWTEAM
+        project: JAS
         issuetype: Task
         summary: |
           ${{ github.event.issue.title }}
