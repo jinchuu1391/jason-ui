@@ -28,7 +28,7 @@ jobs:
           ${{ github.event.issue.title }}
         description: |
           ${{ github.event.issue.body }}
-        fields: '{"assignee": {"accountId": ${{ secrets.ACCOUNT_ID }}}}'
+        fields: '{"assignee": {"accountId": "${{ secrets.ACCOUNT_ID }}"}}'
           
         
     - name: Log created issue
