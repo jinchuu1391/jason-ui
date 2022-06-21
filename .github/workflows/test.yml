@@ -12,7 +12,7 @@ jobs:
         jinchuu1931: 6271faf33d0b58006946fe0c
     steps:
       - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ fromJSON(env) }}
+        # env:
+        #   GITHUB_CONTEXT: ${{ fromJSON(env) }}
         run: |
-          echo "$GITHUB_CONTEXT"
+          echo "${{ fromJSON(env) }}"
