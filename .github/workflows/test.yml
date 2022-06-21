@@ -3,14 +3,14 @@ name: Create jira issue from github issue
 on:
   issues:
     types: [opened]
-
+env:
+  jinchuu1931: 6271faf33d0b58006946fe0c
 jobs:
   printJob:
     name: Print event
-    runs-on: ubuntu-latest
-    env:
-        jinchuu1931: 6271faf33d0b58006946fe0c
+    runs-on: ubuntu-latest  
     steps:
       - name: Dump GitHub context
+      - github-id: ${{ github.actor }}
         run: |
-          echo ${{ env.jinchuu1391 }}
+          echo ${{ env }} ${{ github-id }}
