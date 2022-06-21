@@ -13,6 +13,6 @@ jobs:
     steps:
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ env.${{ github.actor }} }}
+          GITHUB_CONTEXT: ${{ fromJSON(env) }}
         run: |
           echo "$GITHUB_CONTEXT"
