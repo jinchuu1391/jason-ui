@@ -1,6 +1,8 @@
 name: Create jira issue from github issue
 
 on:
+  issues:
+    types: [opened]
   workflow_call:
     inputs:
       username:
