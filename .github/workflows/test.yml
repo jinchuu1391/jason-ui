@@ -10,4 +10,7 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          script: console.log(context.payload.issue.assignee.login)
+          script: |
+            const githubId = context.payload.issue.assignee.login
+            const accountId = {githubId} = process.env
+            console.log(accountId)
