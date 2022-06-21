@@ -1,16 +1,18 @@
 name: Create jira issue from github issue
 
 on:
-  issues:
-    types: [opened]
-env:
-  jinchuu1931: 6271faf33d0b58006946fe0c
+  workflow_call:
+    inputs:
+      username:
+        description: 'A username passed from the caller workflow'
+        value: ${{ github.actor }}
+        required: true
+        type: string
+
 jobs:
-  printJob:
-    name: Print event
-    runs-on: ubuntu-latest  
+  print-username:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Dump GitHub context
-      - github-id: ${{ github.actor }}
-        run: |
-          echo ${{ env }} ${{ github-id }}
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }}
