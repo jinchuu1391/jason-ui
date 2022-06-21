@@ -12,5 +12,5 @@ jobs:
         with:
           script: |
             const githubId = context.payload.issue.assignee.login
-            const accountId = {githubId} = process.env
+            const accountId = process.env.githubId
             console.log(accountId)
