@@ -21,6 +21,8 @@ jobs:
     - name: Create
       id: create
       uses: atlassian/gajira-create@master
+      env:
+        jinchuu1931: 6271faf33d0b58006946fe0c
       with:
         project: JAS
         issuetype: Task
@@ -28,7 +30,7 @@ jobs:
           ${{ github.event.issue.title }}
         description: |
           ${{ github.event.issue.body }}
-        fields: '{"assignee": {"accountId": "${{ secrets.JIRA_ACCOUNT_ID[github.actor] }}"}}'
+        fields: '{"assignee": {"accountId": "${{ fromJSON(env[github.actor]) }}"}}'
           
         
     - name: Log created issue

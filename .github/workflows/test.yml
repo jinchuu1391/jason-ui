@@ -8,9 +8,11 @@ jobs:
   printJob:
     name: Print event
     runs-on: ubuntu-latest
+    env:
+        jinchuu1931: 6271faf33d0b58006946fe0c
     steps:
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ secrets.JIRA_ACCOUNT_ID[github.actor] }}
+          GITHUB_CONTEXT: ${{ fromJSON(env) }}
         run: |
           echo "$GITHUB_CONTEXT"
