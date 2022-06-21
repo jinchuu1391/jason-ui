@@ -16,4 +16,4 @@ jobs:
               jinchuu1391: '6271faf33d0b58006946fe0c'
             }
             const myId = accountIds.githubId
-            console.log(myId)
+            console.log(githubId)
