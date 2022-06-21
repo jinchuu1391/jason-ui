@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Dump GitHub context
         run: |
-          echo ${{ format('{0}.{1}', env, github.actor) }}
+          echo ${{ format('env.{0}',github.actor) }}
