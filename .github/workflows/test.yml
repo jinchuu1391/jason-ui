@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Dump GitHub context
         run: |
-          echo ${{ env[github.actor] }}
+          echo ${{ fromJSON(env.jinchuu1391) }}
