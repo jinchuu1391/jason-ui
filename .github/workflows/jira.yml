@@ -1,37 +1,37 @@
-name: Create jira issue from github issue
+# name: Create jira issue from github issue
 
-on:
-  issues:
-    types: [opened]
+# on:
+#   issues:
+#     types: [opened]
 
-jobs:
-  create_jira_task:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
+# jobs:
+#   create_jira_task:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@master
 
-    - name: Login
-      uses: atlassian/gajira-login@master
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+#     - name: Login
+#       uses: atlassian/gajira-login@master
+#       env:
+#         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+#         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+#         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-    - name: Create
-      id: create
-      uses: atlassian/gajira-create@master
-      env:
-        jinchuu1931: 6271faf33d0b58006946fe0c
-      with:
-        project: JAS
-        issuetype: Task
-        summary: |
-          ${{ github.event.issue.title }}
-        description: |
-          ${{ github.event.issue.body }}
-        fields: '{"assignee": {"accountId": "${{ fromJSON(env[github.actor]) }}"}}'
+#     - name: Create
+#       id: create
+#       uses: atlassian/gajira-create@master
+#       env:
+#         jinchuu1931: 6271faf33d0b58006946fe0c
+#       with:
+#         project: JAS
+#         issuetype: Task
+#         summary: |
+#           ${{ github.event.issue.title }}
+#         description: |
+#           ${{ github.event.issue.body }}
+#         fields: '{"assignee": {"accountId": "${{ env.${{ github.actor }} }}"}}'
           
         
-    - name: Log created issue
-      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
+#     - name: Log created issue
+#       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
