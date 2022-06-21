@@ -10,8 +10,4 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          script: |
-            const githubId = ${{github.actor}}
-            const accountId = process.env.githubId
-            echo accountId
-            console.log('result: ',accountId)
+          script: console.log(context)
