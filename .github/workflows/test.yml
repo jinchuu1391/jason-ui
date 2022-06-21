@@ -3,18 +3,15 @@ name: Create jira issue from github issue
 on:
   issues:
     types: [opened]
-  workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        value: ${{ github.actor }}
-        required: true
-        type: string
 
 jobs:
-  print-username:
+  comment:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print the input name to STDOUT
-        run: echo The username is ${{ inputs.username }}
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const githubId = ${{github.actor}}
+            const accountId = process.env.githubId
+            echo accountId
+            console.log('result: ',accountId)
