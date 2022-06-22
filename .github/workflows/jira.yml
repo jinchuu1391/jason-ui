@@ -2,7 +2,7 @@ name: Create jira issue from github issue
 
 on:
   issues:
-    types: [opened]
+    types: [close]
 
 jobs:
   create_jira_task:
@@ -18,18 +18,5 @@ jobs:
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-    - name: Create
-      id: create
-      uses: atlassian/gajira-create@master
-      with:
-        project: JAS
-        issuetype: Task
-        summary: |
-          ${{ github.event.issue.title }}
-        description: |
-          ${{ github.event.issue.body }}
-        fields: '{"assignee": {"accountId": "6271faf33d0b58006946fe0c"}}'
-          
-        
-    - name: Log created issue
-      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
+    - name: Print issue info
+      run: echo "Issue info: ${{ github.event.issue }}"
